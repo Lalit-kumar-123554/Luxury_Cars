@@ -1,12 +1,12 @@
 import React from "react";
-import Banner from "./Banner";
-import Book from "./Book";
-import ServiceItem from "./Services";
-import CarCards from "./CarCard";
-import Experience from "./Experience";
-import BecomeDriver from "./Driver";
-import Newsletter from "./Newsletter";
-import Footer from "./Footer";
+import Banner from "../Components/Banner";
+import Book from "../Components/Book";
+import ServiceItem from "../Components/Services";
+import CarCards from "../Components/CarCard";
+import Experience from "../Components/Experience";
+import BecomeDriver from "../Components/Driver";
+import Newsletter from "../Components/Newsletter";
+import Footer from "../Components/Footer";
 
 const Home = () => {
   return (
