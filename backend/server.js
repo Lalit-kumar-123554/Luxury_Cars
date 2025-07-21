@@ -1,26 +1,27 @@
- 
 const express = require("express");
-const connectDB = require("./db");
-const cors = require("cors");
-const carRoutes = require("./routes/carRoutes");
-require("dotenv").config();
 const mongoose = require("mongoose");
-const dotenv = require("dotenv");
+const cors = require("cors");
+require("dotenv").config();
 
 const app = express();
-
-// Connect to MongoDB
-dotenv.config();
-connectDB();
+const PORT = process.env.PORT || 5000;
 
 // Middleware
 app.use(cors());
 app.use(express.json());
 
+// Connect MongoDB
+mongoose.connect(process.env.MONGO_URI || "mongodb://localhost:27017/luxury-car", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+.then(() => console.log(" MongoDB connected"))
+.catch((err) => console.error("MongoDB connection error:", err));
+
 // Routes
-app.use("/api/cars", carRoutes);
-app.use("/api/bookings", require("./routes/bookingRoutes")); // if using
+app.use("/api/bookings", require("./routes/bookingRoutes"));
 
 // Start server
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});

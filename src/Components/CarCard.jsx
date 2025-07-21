@@ -21,7 +21,7 @@ const CarCards = () => {
             <img src="/1.png" alt="Audi RS7" className="w-full h-[155px] object-cover" />
           </div>
           <div className="p-4 bg-white">
-            <div className="text-center text-[#21408E] text-[22px] mb-2">10,000$</div>
+            <div className="text-center text-[#21408E] text-[22px] mb-2">10,000</div>
             <button className="block mx-auto bg-[#21408E] text-white px-5 py-2 text-[18px] rounded-lg">
               Rent
             </button>
@@ -38,9 +38,9 @@ const CarCards = () => {
             <img src="/3.png" alt="Audi RS7" className="w-full h-[155px] object-cover" />
           </div>
           <div className="p-4 bg-white">
-            <div className="text-center text-[#21408E] text-[22px] mb-2">60,000$</div>
+            <div className="text-center text-[#21408E] text-[22px] mb-2">60,000</div>
             <button className="block mx-auto bg-[#21408E] text-white px-5 py-2 text-[18px] rounded-lg">
-              Buy
+              Rent
             </button>
           </div>
         </div>
@@ -55,7 +55,7 @@ const CarCards = () => {
             <img src="/4.png" alt="Audi RS7" className="w-full h-[160px] object-cover" />
           </div>
           <div className="p-4 bg-white">
-            <div className="text-center text-[#21408E] text-[22px] mb-2">15,000$</div>
+            <div className="text-center text-[#21408E] text-[22px] mb-2">15,000</div>
             <button className="block mx-auto bg-[#21408E] text-white px-5 py-2 text-[18px] rounded-lg">
               Rent
             </button>
@@ -72,9 +72,9 @@ const CarCards = () => {
             <img src="/5.png" alt="Audi RS7" className="w-full h-[160px] object-cover" />
           </div>
           <div className="p-4 bg-white">
-            <div className="text-center text-[#21408E] text-[22px] mb-2">65,000$</div>
+            <div className="text-center text-[#21408E] text-[22px] mb-2">65,000</div>
             <button className="block mx-auto bg-[#21408E] text-white px-5 py-2 text-[18px] rounded-lg">
-              Buy
+              Rent
             </button>
           </div>
         </div>
