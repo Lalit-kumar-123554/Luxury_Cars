@@ -5,6 +5,10 @@ const bookingSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  model: {
+    type: String,
+    required: true,
+  },
   pickupLocation: {
     type: String,
     required: true,
@@ -15,6 +19,14 @@ const bookingSchema = new mongoose.Schema({
   },
   date: {
     type: Date,
+    required: true,
+  },
+  hourlyPrice: {
+    type: Number,
+    required: true,
+  },
+  features: {
+    type: [String], // <-- array of strings
     required: true,
   },
 });
