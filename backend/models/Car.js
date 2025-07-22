@@ -8,7 +8,7 @@ const carSchema = new mongoose.Schema({
   seats: Number,
   speed: String,
   price: Number,
-  hourlyPrice: Number, // ✅ must be included
+  hourlyPrice: Number, //  must be included
   features: [String],
 });
 

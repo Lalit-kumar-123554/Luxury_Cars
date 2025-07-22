@@ -9,13 +9,14 @@ exports.createBooking = async (req, res) => {
     if (!carId || !model || !pickupLocation || !dropoffLocation || !date || !hourlyPrice) {
       return res.status(400).json({ message: "All fields are required" });
     }
-
+    const inputDate = new Date(date);
+    const utcDate = new Date(inputDate.getTime() - inputDate.getTimezoneOffset() * 60000);
     const newBooking = new Booking({
       carId,
       model,
       pickupLocation,
       dropoffLocation,
-      date,
+      date :utcDate,
       hourlyPrice,
       features,
     });

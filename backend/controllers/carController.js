@@ -11,7 +11,7 @@ exports.getAllCars = async (req, res) => {
 };
 
 // GET single car
-// backend/controllers/carController.js
+
 exports.getCarById = async (req, res) => {
   try {
     const car = await Car.findById(req.params.id);
