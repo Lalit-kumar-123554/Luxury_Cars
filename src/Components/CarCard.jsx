@@ -1,84 +1,52 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-
+import  { useEffect, useState } from "react";
 const CarCards = () => {
+  const [cars, setCars] = useState([]);
   const navigate = useNavigate();
+
+  useEffect(() => {
+  const fetchCars = async () => {
+    const res = await fetch("http://localhost:5000/api/cars");
+    const data = await res.json();
+    setCars(data);
+  };
+
+  fetchCars();
+}, []);
+
+
 
   return (
     <section className="w-full flex flex-col items-center px-4 py-10">
       <h2 className="text-[32px] sm:text-[38px] md:text-[45px] font-dmserif text-black text-center leading-snug mb-10">
         We have everything you need
       </h2>
-
-      <div className="flex flex-wrap justify-center gap-8">
-        {/* === Car 1 === */}
+<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-6 py-10">
+      {cars.map((car) => (
         <div
-          className="w-full sm:w-[300px] bg-[#FAF5F8] rounded-lg overflow-hidden shadow cursor-pointer"
-          onClick={() => navigate("/car/1")}
+          key={car._id}
+          className="bg-white rounded-xl shadow-md p-5 hover:shadow-xl transition"
         >
-          <div className="px-6 pt-6">
-            <h3 className="text-[28px] text-[#21408E] mb-4">Dodge Charger</h3>
-            <img src="/1.png" alt="Audi RS7" className="w-full h-[155px] object-cover" />
-          </div>
-          <div className="p-4 bg-white">
-            <div className="text-center text-[#21408E] text-[22px] mb-2">10,000</div>
-            <button className="block mx-auto bg-[#21408E] text-white px-5 py-2 text-[18px] rounded-lg">
-              Rent
-            </button>
-          </div>
+          <img
+            src={car.image}
+            alt={car.model}
+            className="w-full h-48 object-cover rounded-md"
+          />
+          <h2 className="text-xl font-bold mt-4">{car.model}</h2>
+          <p className="text-gray-600">HourlyPrice: ₹{car.hourlyPrice}</p>
+          <p className="text-sm text-gray-500 mt-2">{car.description}</p>
+          <button
+            className="mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+            onClick={() => navigate(`/car/${car._id}`)}
+          >
+            Rent Now
+          </button>
         </div>
-
-        {/* === Car 2 === */}
-        <div
-          className="w-full sm:w-[300px] bg-[#FAF5F8] rounded-lg overflow-hidden shadow cursor-pointer"
-          onClick={() => navigate("/car/2")}
-        >
-          <div className="px-6 pt-6">
-            <h3 className="text-[28px] text-[#21408E] mb-4">Audi RS7</h3>
-            <img src="/3.png" alt="Audi RS7" className="w-full h-[155px] object-cover" />
-          </div>
-          <div className="p-4 bg-white">
-            <div className="text-center text-[#21408E] text-[22px] mb-2">60,000</div>
-            <button className="block mx-auto bg-[#21408E] text-white px-5 py-2 text-[18px] rounded-lg">
-              Rent
-            </button>
-          </div>
-        </div>
-
-        {/* === Car 3 === */}
-        <div
-          className="w-full sm:w-[300px] bg-[#FAF5F8] rounded-lg overflow-hidden shadow cursor-pointer"
-          onClick={() => navigate("/car/3")}
-        >
-          <div className="px-6 pt-6">
-            <h3 className="text-[28px] text-[#21408E] mb-4">Audi RS7</h3>
-            <img src="/4.png" alt="Audi RS7" className="w-full h-[160px] object-cover" />
-          </div>
-          <div className="p-4 bg-white">
-            <div className="text-center text-[#21408E] text-[22px] mb-2">15,000</div>
-            <button className="block mx-auto bg-[#21408E] text-white px-5 py-2 text-[18px] rounded-lg">
-              Rent
-            </button>
-          </div>
-        </div>
-
-        {/* === Car 4 === */}
-        <div
-          className="w-full sm:w-[300px] bg-[#FAF5F8] rounded-lg overflow-hidden shadow cursor-pointer"
-          onClick={() => navigate("/car/4")}
-        >
-          <div className="px-6 pt-6">
-            <h3 className="text-[28px] text-[#21408E] mb-4">Range Rover Velar</h3>
-            <img src="/5.png" alt="Audi RS7" className="w-full h-[160px] object-cover" />
-          </div>
-          <div className="p-4 bg-white">
-            <div className="text-center text-[#21408E] text-[22px] mb-2">65,000</div>
-            <button className="block mx-auto bg-[#21408E] text-white px-5 py-2 text-[18px] rounded-lg">
-              Rent
-            </button>
-          </div>
-        </div>
-      </div>
+      ))}
+    </div>
+      
+      
     </section>
   );
 };

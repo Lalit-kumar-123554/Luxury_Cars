@@ -1,10 +1,10 @@
+// ✅ Import only ONCE at the top
 const Booking = require("../models/Booking");
 
 // POST /api/bookings
 exports.createBooking = async (req, res) => {
   try {
-    console.log("Booking request body:", req.body);
-    const { carId, model, pickupLocation, dropoffLocation, date, hourlyPrice,features } = req.body;
+    const { carId, model, pickupLocation, dropoffLocation, date, hourlyPrice, features } = req.body;
 
     if (!carId || !model || !pickupLocation || !dropoffLocation || !date || !hourlyPrice) {
       return res.status(400).json({ message: "All fields are required" });
@@ -20,11 +20,14 @@ exports.createBooking = async (req, res) => {
       features,
     });
 
-    const savedBooking = await newBooking.save();
-    res.status(201).json(savedBooking);
+    await newBooking.save();
+
+    // console.log("Booking saved:", newBooking);
+    res.status(201).json({ message: "Booking successful", data: newBooking });
+
   } catch (error) {
     console.error("Booking error:", error);
-    res.status(500).json({ message: "Server error" });
+    res.status(500).json({ message: error.message });
   }
 };
 
