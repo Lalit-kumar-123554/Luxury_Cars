@@ -6,6 +6,7 @@ import axios from "axios";
 
 const CarDetails = () => {
   const { id } = useParams();
+  console.log(useParams())
   const navigate = useNavigate();
 
   const [car, setCar] = useState(null);
