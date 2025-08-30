@@ -6,10 +6,11 @@ const ServiceItem = ({ title, description }) => {
       {/* Image Section */}
       <div className="w-full md:w-1/2 flex justify-center items-center">
         <img
-          src="/image2.png"
-          alt="Luxury Car"
-          className="w-full h-[250px] md:h-full object-cover rounded-[40px] md:rounded-[80px]"
-        />
+  src={`${import.meta.env.BASE_URL}image2.png`}
+  alt="Luxury Car"
+  className="w-full h-[250px] md:h-full object-cover rounded-[40px] md:rounded-[80px]"
+/>
+
       </div>
 
       {/* Services Content */}

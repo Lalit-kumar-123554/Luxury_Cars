@@ -5,7 +5,8 @@ const Banner = () => {
   return (
     <div
       className="relative mt-10 w-full h-[600px] bg-no-repeat bg-cover bg-center"
-      style={{ backgroundImage: "url('/image.1.png.png')" }}
+      style={{ backgroundImage: `url(${import.meta.env.BASE_URL}image.1.png.png)` }}
+
     >
       {/* Text 1: Safer, Faster and comfortable */}
       <div className="absolute right-6 md:right-16 bottom-[160px] text-xl sm:text-3xl md:text-4xl text-black font-serif text-right leading-tight">
