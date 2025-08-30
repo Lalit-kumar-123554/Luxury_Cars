@@ -1,16 +1,14 @@
 {
   "name": "project-1",
-  "homepage": "https://lalit-kumar-123554.github.io/Luxury_Cars",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+     "dev": "nodemon backend/server.js",
+  "start": "node backend/server.js",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "preview": "vite preview"
   },
   "dependencies": {
     "axios": "^1.10.0",

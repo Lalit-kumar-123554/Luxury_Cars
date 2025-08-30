@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { MdAccountCircle, MdMenu, MdClose } from "react-icons/md";
-
+import { Link } from "react-router-dom";
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -14,10 +14,10 @@ const Header = () => {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex gap-6 text-base sm:text-lg font-roboto text-black">
-          <span className="cursor-pointer hover:text-[#F1BC00] transition">Home</span>
-          <span className="cursor-pointer hover:text-[#F1BC00] transition">Services</span>
-          <span className="cursor-pointer hover:text-[#F1BC00] transition">Blog</span>
-          <span className="cursor-pointer hover:text-[#F1BC00] transition">Contact Us</span>
+          <link className="cursor-pointer hover:text-[#F1BC00] transition">Home</link>
+          <link className="cursor-pointer hover:text-[#F1BC00] transition">Services</link>
+          <link className="cursor-pointer hover:text-[#F1BC00] transition">Blog</link>
+          <link className="cursor-pointer hover:text-[#F1BC00] transition">Contact Us</link>
         </nav>
 
         {/* Sign In + Menu */}
