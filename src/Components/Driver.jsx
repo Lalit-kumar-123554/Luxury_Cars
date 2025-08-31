@@ -6,10 +6,11 @@ const BecomeDriver = () => {
       <div className="w-full max-w-7xl h-[400px] rounded-[10px] overflow-hidden relative">
         {/* Background Image */}
         <img
-          className="w-full h-full object-cover"
-          src="/d.1.jpg"
-          alt="Become a Driver"
-        />
+  className="w-full h-full object-cover"
+  src="/d.1.jpg"   // ✅ correct, matches your /public
+  alt="Become a Driver"
+/>
+
 
         {/* Overlay Content */}
         <div className="absolute top-0 left-0 p-4 sm:p-8 md:p-10 flex flex-col justify-start w-full h-full text-white bg-black/40">

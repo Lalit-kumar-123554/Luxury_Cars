@@ -54,11 +54,7 @@ const Footer = () => {
         </div>
 
         {/* Social Icons */}
-        <div className="flex gap-4 items-center">
-          <img src="/icons/twitter.png" alt="Twitter" className="w-8 md:w-[50px] h-8 md:h-[50px]" />
-          <img src="/icons/facebook.png" alt="Facebook" className="w-8 md:w-[40px] h-8 md:h-[40px]" />
-          <img src="/icons/instagram.png" alt="Instagram" className="w-8 md:w-[40px] h-8 md:h-[40px]" />
-        </div>
+        
       </div>
     </footer>
   );

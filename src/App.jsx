@@ -1,19 +1,15 @@
-// App.jsx ✅ FIXED version
+// App.jsx
 import { Routes, Route } from "react-router-dom";
-import Header from "./Components/Header";
-import Home from "./Components/Home";
+import Home from "./Components/Home.jsx";
+import CarDetails from "./Components/CarDetails.jsx";
 
-import CarDetails from "./Components/CarDetails";
-const App = () => {
+function App() {
   return (
-    <>
-      <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/car/:id" element={<CarDetails />} />
-      </Routes>
-    </>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/car/:id" element={<CarDetails />} />
+    </Routes>
   );
-};
+}
 
 export default App;

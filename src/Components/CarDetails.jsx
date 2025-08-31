@@ -55,10 +55,11 @@ const CarDetails = () => {
     <div className="max-w-4xl mx-auto p-6">
       <h2 className="text-[40px] font-dmserif mb-4 text-center">{car.model}</h2>
       <img
-        src={car.image}
-        alt={car.model}
-        className="w-full h-[300px] object-cover rounded-md mb-6"
-      />
+  src={`/logo/${car.image}`}
+  alt={car.model}
+  className="w-full h-[300px] object-cover rounded-md mb-6"
+/>
+
       <p className="text-[24px] text-[#21408E] font-semibold mb-4">
         Hourly Price: ₹{car.hourlyPrice}
       </p>

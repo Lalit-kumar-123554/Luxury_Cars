@@ -29,10 +29,11 @@ const CarCards = () => {
           className="bg-white rounded-xl shadow-md p-5 hover:shadow-xl transition"
         >
           <img
-            src={car.image}
-            alt={car.model}
-            className="w-full h-48 object-cover rounded-md"
-          />
+  src={`/logo/${car.image}`}
+  alt={car.model}
+  className="w-full h-48 object-cover rounded-md"
+/>
+
           <h2 className="text-xl font-bold mt-4">{car.model}</h2>
           <p className="text-gray-600">HourlyPrice: ₹{car.hourlyPrice}</p>
           <p className="text-sm text-gray-500 mt-2">{car.description}</p>
