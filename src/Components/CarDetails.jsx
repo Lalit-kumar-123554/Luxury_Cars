@@ -17,7 +17,7 @@ const CarDetails = () => {
   useEffect(() => {
     const fetchCar = async () => {
       try {
-        const res = await axios.get(`https://your-backend-url.com/api/cars/${id}`);
+        const res = await axios.get(`http://localhost:5000/api/cars/${id}`);
         setCar(res.data);
       } catch (err) {
         console.error("Error fetching car:", err);
@@ -39,7 +39,8 @@ const CarDetails = () => {
         features: car.features,
       };
 
-      await axios.post("https://your-backend-url.com/api/bookings", bookingData);
+      await axios.post("http://localhost:5000/api/bookings", bookingData);
+      alert("Car booked successfully!");
     } catch (error) {
       console.error("Booking error:", error);
       alert("Booking failed. Check console for details.");

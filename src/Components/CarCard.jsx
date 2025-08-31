@@ -7,7 +7,7 @@ const CarCards = () => {
 
   useEffect(() => {
   const fetchCars = async () => {
-    const res = await fetch("https://your-backend-url.com/api/cars");
+    const res = await fetch("http://localhost:5000/api/cars");
     const data = await res.json();
     setCars(data);
   };
