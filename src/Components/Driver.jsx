@@ -7,8 +7,7 @@ const BecomeDriver = () => {
         {/* Background Image */}
         <img
   className="w-full h-full object-cover"
-  src="/d.1.jpg"   // ✅ correct, matches your /public
-  alt="Become a Driver"
+  src={`${import.meta.env.BASE_URL}d.1.jpg`} alt="Become a Driver"
 />
 
 

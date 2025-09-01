@@ -54,9 +54,7 @@ const CarDetails = () => {
   return (
     <div className="max-w-4xl mx-auto p-6">
       <h2 className="text-[40px] font-dmserif mb-4 text-center">{car.model}</h2>
-      <img
-  src={`/logo/${car.image}`}
-  alt={car.model}
+      <img src={`${import.meta.env.BASE_URL}logo/${car.image}`} alt={car.model}
   className="w-full h-[300px] object-cover rounded-md mb-6"
 />
 

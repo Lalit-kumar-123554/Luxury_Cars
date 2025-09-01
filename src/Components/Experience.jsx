@@ -10,7 +10,7 @@ const Experience = () => {
     <div className="bg-gray-100 w-full flex flex-col items-center py-12 px-4">
       <div className="w-full max-w-7xl bg-white rounded-xl py-12 px-4 sm:px-8">
         {/* Section Heading */}
-        <h2 className="fonzzzzzzzzzzzzzt-serif text-2xl sm:text-3xl md:text-[45px] font-normal text-black text-center mb-12 leading-snug">
+        <h2 className="font-serif text-2xl sm:text-3xl md:text-[45px] font-normal text-black text-center mb-12 leading-snug">
           Feel the best experience <br/> <br/>with our luxury car
         </h2>
 

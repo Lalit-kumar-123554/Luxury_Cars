@@ -5,9 +5,7 @@ const ServiceItem = ({ title, description }) => {
     <div className="flex flex-col md:flex-row bg-white px-4 md:px-10 lg:px-20 py-10 md:py-[60px] rounded-[12px] max-w-screen-xl mx-auto mt-10 gap-8">
       {/* Image Section */}
       <div className="w-full md:w-1/2 flex justify-center items-center">
-        <img
-  src="/image2.png"   // ✅ correct (your /public/image2.png)
-  alt="Luxury Car"
+        <img src={`${import.meta.env.BASE_URL}image2.png`} alt="Luxury Car"
   className="w-full h-[250px] md:h-full object-cover rounded-[40px] md:rounded-[80px]"
 />
 
