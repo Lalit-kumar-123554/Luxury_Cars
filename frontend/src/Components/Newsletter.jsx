@@ -41,35 +41,28 @@ const Newsletter = () => {
         className="w-full max-w-xl flex flex-col sm:flex-row items-center bg-white rounded-[10px] p-4 gap-3"
       >
         <div className="flex flex-col w-full sm:flex-1">
-          <label
-            htmlFor="newsletterEmail"
-            className="font-roboto text-[16px] text-black/50 capitalize mb-1"
-          >
+          <label className="font-roboto text-[16px] text-black/50 mb-1">
             Email
           </label>
+
           <input
             type="email"
-            id="newsletterEmail"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="you@example.com"
-            className="w-full h-[40px] px-3 text-[16px] font-roboto border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-[#21408E]"
+            className="w-full h-[40px] px-3 text-[16px] border rounded"
           />
         </div>
 
         <button
           type="submit"
-          className="w-full sm:w-[112px] h-[45px] bg-[#21408E] text-white font-roboto text-[18px] capitalize rounded-[10px] transition hover:bg-[#1a336e]"
+          className="w-full sm:w-[112px] h-[45px] bg-[#21408E] text-white text-[18px] rounded-[10px]"
         >
           Submit
         </button>
       </form>
 
-      {message && (
-        <p className="mt-4 text-center text-sm text-black font-roboto">
-          {message}
-        </p>
-      )}
+      {message && <p className="mt-4 text-center text-sm">{message}</p>}
     </section>
   );
 };

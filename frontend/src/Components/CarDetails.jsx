@@ -1,78 +1,121 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
 
-const Newsletter = () => {
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
+const CarDetails = () => {
+  const { id } = useParams();
+  const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const [car, setCar] = useState(null);
+  const [pickupLocation, setPickupLocation] = useState("");
+  const [dropoffLocation, setDropoffLocation] = useState("");
+  const [selectedDate, setSelectedDate] = useState(null);
 
-    if (!email) {
-      setMessage("Please enter an email.");
-      return;
-    }
+  useEffect(() => {
+    const fetchCar = async () => {
+      try {
+        const res = await axios.get(
+          `${import.meta.env.VITE_API_URL}/api/cars/${id}`
+        );
+        setCar(res.data);
+      } catch (err) {
+        console.error("Error fetching car:", err);
+      }
+    };
 
+    fetchCar();
+  }, [id]);
+
+  const handleBooking = async () => {
     try {
-      const res = await axios.post(
-        `${import.meta.env.VITE_API_URL}/api/newsletter`,
-        { email }
+      const bookingData = {
+        carId: car._id,
+        model: car.model,
+        pickupLocation,
+        dropoffLocation,
+        date: selectedDate,
+        hourlyPrice: car.hourlyPrice,
+        features: car.features,
+      };
+
+      await axios.post(
+        `${import.meta.env.VITE_API_URL}/api/bookings`,
+        bookingData
       );
 
-      setMessage(res.data.message);
-      setEmail("");
+      alert("Car booked successfully!");
     } catch (error) {
-      if (error.response) {
-        setMessage(error.response.data.message);
-      } else {
-        setMessage("Something went wrong. Try again.");
-      }
+      console.error("Booking error:", error);
+      alert("Booking failed.");
     }
   };
 
+  if (!car) {
+    return <div className="text-center mt-20 text-xl">Loading car details...</div>;
+  }
+
   return (
-    <section className="w-full bg-[#F1BC00] py-10 px-4 mt-20 mb-16 flex flex-col items-center justify-center">
-      <h2 className="font-dmserif text-[28px] sm:text-[32px] md:text-[35px] text-black text-center leading-tight capitalize mb-6">
-        Subscribe to our newsletters
-      </h2>
+    <div className="max-w-4xl mx-auto p-6">
+      <h2 className="text-[40px] font-dmserif mb-4 text-center">{car.model}</h2>
 
-      <form
-        onSubmit={handleSubmit}
-        className="w-full max-w-xl flex flex-col sm:flex-row items-center bg-white rounded-[10px] p-4 gap-3"
+      {/* Correct Image Path */}
+      <img
+        src={`${import.meta.env.VITE_API_URL}/uploads/${car.image}`}
+        alt={car.model}
+        className="w-full h-[300px] object-cover rounded-md mb-6"
+      />
+
+      <p className="text-[24px] text-[#21408E] font-semibold mb-4">
+        Hourly Price: ₹{car.hourlyPrice}
+      </p>
+
+      <ul className="list-disc pl-6 text-[20px] text-gray-700 mb-6">
+        {car.features?.map((feature, index) => (
+          <li key={index}>{feature}</li>
+        ))}
+      </ul>
+
+      <div className="mb-6 space-y-4">
+        <input
+          type="text"
+          placeholder="Pick-up Location"
+          className="w-[300px] p-3 border rounded-md"
+          value={pickupLocation}
+          onChange={(e) => setPickupLocation(e.target.value)}
+        />
+
+        <input
+          type="text"
+          placeholder="Drop-off Location"
+          className="w-[300px] p-3 border rounded-md"
+          value={dropoffLocation}
+          onChange={(e) => setDropoffLocation(e.target.value)}
+        />
+
+        <DatePicker
+          selected={selectedDate}
+          onChange={(date) => setSelectedDate(date)}
+          placeholderText="Select Date"
+          className="w-[300px] p-3 border rounded-md"
+        />
+      </div>
+
+      <button
+        className="px-6 py-3 bg-[#21408E] text-white text-[22px] rounded-[10px]"
+        onClick={handleBooking}
       >
-        <div className="flex flex-col w-full sm:flex-1">
-          <label
-            htmlFor="newsletterEmail"
-            className="font-roboto text-[16px] text-black/50 capitalize mb-1"
-          >
-            Email
-          </label>
+        Rent Now
+      </button>
 
-          <input
-            type="email"
-            id="newsletterEmail"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="you@example.com"
-            className="w-full h-[40px] px-3 text-[16px] border rounded focus:ring-[#21408E]"
-          />
-        </div>
-
-        <button
-          type="submit"
-          className="w-full sm:w-[112px] h-[45px] bg-[#21408E] text-white text-[18px] rounded-[10px]"
-        >
-          Submit
+      <div className="mt-6">
+        <button className="text-blue-500 underline text-lg" onClick={() => navigate(-1)}>
+          ← Back
         </button>
-      </form>
-
-      {message && (
-        <p className="mt-4 text-center text-sm text-black font-roboto">
-          {message}
-        </p>
-      )}
-    </section>
+      </div>
+    </div>
   );
 };
 
-export default Newsletter;
+export default CarDetails;
