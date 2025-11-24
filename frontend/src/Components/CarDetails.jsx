@@ -62,10 +62,11 @@ const CarDetails = () => {
 
       {/* Correct Image Path */}
       <img
-        src={`${import.meta.env.VITE_API_URL}/uploads/${car.image}`}
-        alt={car.model}
-        className="w-full h-[300px] object-cover rounded-md mb-6"
-      />
+  src={`/${car.image}`}
+  alt={car.model}
+  className="w-full h-48 object-cover rounded-lg"
+/>
+
 
       <p className="text-[24px] text-[#21408E] font-semibold mb-4">
         Hourly Price: ₹{car.hourlyPrice}

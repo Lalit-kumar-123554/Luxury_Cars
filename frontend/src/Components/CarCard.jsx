@@ -32,10 +32,11 @@ const CarCards = () => {
 
             {/* Correct Image Path */}
             <img
-              src={`${import.meta.env.VITE_API_URL}/uploads/${car.image}`}
-              alt={car.model}
-              className="w-full h-48 object-cover rounded-lg"
-            />
+  src={`/${car.image}`}
+  alt={car.model}
+  className="w-full h-48 object-cover rounded-lg"
+/>
+
 
             <h2 className="text-xl font-bold mt-4">{car.model}</h2>
             <p className="text-gray-600">Hourly Price: ₹{car.hourlyPrice}</p>
