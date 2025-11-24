@@ -6,7 +6,7 @@ const Newsletter = () => {
   const [message, setMessage] = useState("");
 
   const handleSubmit = async (e) => {
-    e.preventDefault(); // Prevent page reload
+    e.preventDefault();
 
     if (!email) {
       setMessage("Please enter an email.");
@@ -14,15 +14,16 @@ const Newsletter = () => {
     }
 
     try {
-      const res = await axios.post("http://localhost:5000/api/newsletter", {
-        email,
-      });
+      const res = await axios.post(
+        `${import.meta.env.VITE_API_URL}/api/newsletter`,
+        { email }
+      );
 
-      setMessage(res.data.message); // "Subscribed successfully"
-      setEmail(""); // Clear input after submit
+      setMessage(res.data.message);
+      setEmail("");
     } catch (error) {
       if (error.response) {
-        setMessage(error.response.data.message); // e.g. "Already subscribed"
+        setMessage(error.response.data.message);
       } else {
         setMessage("Something went wrong. Try again.");
       }
@@ -31,17 +32,14 @@ const Newsletter = () => {
 
   return (
     <section className="w-full bg-[#F1BC00] py-10 px-4 mt-20 mb-16 flex flex-col items-center justify-center">
-      {/* Heading */}
       <h2 className="font-dmserif text-[28px] sm:text-[32px] md:text-[35px] text-black text-center leading-tight capitalize mb-6">
         Subscribe to our newsletters
       </h2>
 
-      {/* Form */}
       <form
         onSubmit={handleSubmit}
         className="w-full max-w-xl flex flex-col sm:flex-row items-center bg-white rounded-[10px] p-4 gap-3"
       >
-        {/* Email Input */}
         <div className="flex flex-col w-full sm:flex-1">
           <label
             htmlFor="newsletterEmail"
@@ -59,7 +57,6 @@ const Newsletter = () => {
           />
         </div>
 
-        {/* Submit Button */}
         <button
           type="submit"
           className="w-full sm:w-[112px] h-[45px] bg-[#21408E] text-white font-roboto text-[18px] capitalize rounded-[10px] transition hover:bg-[#1a336e]"
@@ -68,7 +65,6 @@ const Newsletter = () => {
         </button>
       </form>
 
-      {/* Message Display */}
       {message && (
         <p className="mt-4 text-center text-sm text-black font-roboto">
           {message}

@@ -8,7 +8,7 @@ const CarCards = () => {
   useEffect(() => {
     const fetchCars = async () => {
       try {
-        const res = await fetch("http://localhost:5000/api/cars");
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/cars`);
         const data = await res.json();
         console.log("Cars from backend:", data);
         setCars(data);
@@ -30,9 +30,8 @@ const CarCards = () => {
         {cars.map((car) => (
           <div key={car._id} className="bg-white rounded-xl shadow p-5">
 
-            {/* FIXED IMAGE PATH */}
             <img
-              src={`${import.meta.env.BASE_URL}${car.image}`}
+              src={`${import.meta.env.VITE_API_URL}${car.image}`}
               alt={car.model}
               className="w-full h-48 object-cover rounded-lg"
             />

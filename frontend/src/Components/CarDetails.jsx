@@ -16,7 +16,9 @@ const CarDetails = () => {
   useEffect(() => {
     const fetchCar = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/cars/${id}`);
+        const res = await axios.get(
+          `${import.meta.env.VITE_API_URL}/api/cars/${id}`
+        );
         setCar(res.data);
       } catch (err) {
         console.error("Error fetching car:", err);
@@ -38,7 +40,11 @@ const CarDetails = () => {
         features: car.features,
       };
 
-      await axios.post("http://localhost:5000/api/bookings", bookingData);
+      await axios.post(
+        `${import.meta.env.VITE_API_URL}/api/bookings`,
+        bookingData
+      );
+
       alert("Car booked successfully!");
     } catch (error) {
       console.error("Booking error:", error);
@@ -55,7 +61,7 @@ const CarDetails = () => {
       <h2 className="text-[40px] font-dmserif mb-4 text-center">{car.model}</h2>
 
       <img
-        src={`${import.meta.env.BASE_URL}${car.image}`}
+        src={`${import.meta.env.VITE_API_URL}${car.image}`}
         alt={car.model}
         className="w-full h-[300px] object-cover rounded-md mb-6"
       />
@@ -103,7 +109,10 @@ const CarDetails = () => {
       </button>
 
       <div className="mt-6">
-        <button className="text-blue-500 underline text-lg" onClick={() => navigate(-1)}>
+        <button
+          className="text-blue-500 underline text-lg"
+          onClick={() => navigate(-1)}
+        >
           ← Back
         </button>
       </div>
