@@ -29,8 +29,7 @@ const CarCards = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-6">
         {cars.map((car) => (
           <div key={car._id} className="bg-white rounded-xl shadow p-5">
-            
-            {/* Correct Image URL */}
+
             <img
               src={`${import.meta.env.VITE_API_URL}${car.image}`}
               alt={car.model}
