@@ -2,18 +2,42 @@ const Booking = require("../models/Booking");
 
 exports.createBooking = async (req, res) => {
   try {
-    const booking = new Booking(req.body);
-    await booking.save();
-    res.status(201).json(booking);
-  } catch (err) {
-    res.status(400).json({ error: "Booking failed", message: err.message });
+    const {
+      carId,
+      model,
+      pickupLocation,
+      dropoffLocation,
+      date,
+      hourlyPrice,
+      features,
+    } = req.body;
+
+    if (!carId || !model || !pickupLocation || !dropoffLocation || !date || !hourlyPrice) {
+      return res.status(400).json({ message: "All fields are required" });
+    }
+
+    const newBooking = new Booking({
+      carId,
+      model,
+      pickupLocation,
+      dropoffLocation,
+      date,
+      hourlyPrice,
+      features,
+    });
+
+    await newBooking.save();
+    res.status(201).json({ message: "Booking successful", data: newBooking });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
   }
 };
-exports.getAllBookings=async (req,res)=>{
-  try{
-    const bookings=await Booking.find();
-    res.status(200).json(bookings);
-  }catch(error){
-   res.status(500).json({error:error.message});
+
+exports.getAllBookings = async (req, res) => {
+  try {
+    const bookings = await Booking.find();
+    res.json(bookings);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
   }
 };

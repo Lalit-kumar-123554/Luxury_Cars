@@ -2,10 +2,14 @@ const mongoose = require("mongoose");
 
 const carSchema = new mongoose.Schema({
   model: String,
-  price: String,
-  type: String, // "Buy" or "Rent"
-  features: [String],
   image: String,
+  fuelType: String,
+  transmission: String,
+  seats: Number,
+  speed: String,
+  price: Number,
+  hourlyPrice: Number,
+  features: [String],
 });
 
 module.exports = mongoose.model("Car", carSchema);
